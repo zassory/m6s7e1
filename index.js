@@ -24,16 +24,24 @@ http.createServer((req,res = response)=> {
     const url = new URL(req.url,`http://${req.headers.host}`);
     const params = new URLSearchParams(url.searchParams);
 
-    if(req.url.startsWith('/animales') && req.method == 'POST'){
-        let nuevoAnimal;
-        req.on('data', () => {
-            nuevoAnimal = JSON.parse(datos);
-        })
-        req.on('end', ()=> {
-            const nuevoId = Object.keys(animales).length + 1;
-        });
-    }
+    // if(req.url.startsWith('/animales') && req.method == 'PUT'){
+    //     let animal;
+    //     req.on('data', (datos) => {
+    //         animal = JSON.parse(datos);
+    //     })
+    //     req.on('end', ()=> {
 
+    //         const id = params.get('id');
+    //         const animalActualizado = { ...animales[id], ...animal }//Actualizando animal
+    //         animales[id] = animalActualizado;//Redefiniendo animal denteo de objeto inicial animales
+    //         // const nuevoId = Object.keys(animales).length + 1;
+    //         // animales[nuevoId] = nuevoAnimal;
+    //         //res.write(JSON.stringify(animales,null,2));
+    //         res.write(JSON.stringify(animales,null,2));
+    //         res.end();
+    //     });
+    // }
+    
     // if(req.url.startsWith('/animales') && req.method == 'GET'){
     //     res.write(JSON.stringify(animales,null,2));
     //     res.end();
